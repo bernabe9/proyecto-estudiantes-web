@@ -4,25 +4,17 @@ import Typography from '@material-ui/core/Typography';
 
 import VerbExercise from './VerbExercise';
 
-const Exercise = ({ exercise }) => {
-  const renderExercise = () => {
-    switch (exercise.tipo) {
-      case 'verbos':
-        return <VerbExercise exercise={exercise} />;
-      default:
-        return <p>Seleccione un ejerccicio</p>;
+const Exercise = ({ exercise }) => (
+  <div className="container">
+    <Typography variant="headline" component="h3">
+      Ejercicio
+    </Typography>
+    {exercise.tipo === 'verbos' ?
+      <VerbExercise exercise={exercise} /> :
+      <p>Seleccione un ejerccicio</p>
     }
-  };
-
-  return (
-    <div className="container">
-      <Typography variant="headline" component="h3">
-        Ejercicio
-      </Typography>
-      {renderExercise()}
-    </div>
-  );
-};
+  </div>
+);
 
 Exercise.propTypes = {
   exercise: object.isRequired

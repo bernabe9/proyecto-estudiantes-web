@@ -6,11 +6,13 @@
     "npm": ">4",
     "node": ">6"
   },
+  "main": "src/electron.js",
+  "homepage": ".",
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
     "start-message": "babel-node tools/startMessage.js",
     "prestart": "npm-run-all --parallel start-message remove-dist",
-    "start": "npm-run-all --parallel open:src lint",
+    "start": "npm run open:src",
     "start:server": "node server/build/server.js",
     "ssr": "npm run remove-ssr && npm run build:client && npm run build:server && npm run start:server",
     "heroku-postbuild": "npm run build:client && npm run build:server",
@@ -30,10 +32,32 @@
     "test:cover": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch",
     "deploy": "npm run build && babel-node tools/deployS3",
-    "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
+    "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
+    "electron": "electron .",
+    "dev": "NODE_ENV=development nf start",
+    "pack": "electron-builder --dir",
+    "release": "npm run build && electron-builder --linux"
   },
-  "author": "Bernabe Gonzalez",
+  "author": "Bernabe Gonzalez <gobernabe@gmail.com>",
   "license": "MIT",
+  "build": {
+    "productName": "proyecto-ingles",
+    "win": {
+      "target": "NSIS"
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "AppImage"
+      ]
+    },
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    },
+    "directories": {
+      "output": "release"
+    }
+  },
   "dependencies": {
     "@material-ui/core": "1.5.0",
     "@material-ui/icons": "2.0.2",
@@ -82,6 +106,8 @@
     "css-loader": "1.0.0",
     "dotenv": "6.0.0",
     "dotenv-webpack": "1.5.7",
+    "electron": "3.0.0",
+    "electron-builder": "20.28.4",
     "enzyme": "3.4.1",
     "enzyme-adapter-react-16": "1.2.0",
     "eslint": "4.19.1",
@@ -91,6 +117,7 @@
     "eslint-plugin-react": "7.7.0",
     "express": "4.16.3",
     "file-loader": "1.1.11",
+    "foreman": "3.0.1",
     "html-webpack-plugin": "3.2.0",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.5.0",

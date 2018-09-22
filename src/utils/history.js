@@ -1,4 +1,3 @@
-import createBrowserHistory from 'history/createBrowserHistory';
 import createMemoryHistory from 'history/createMemoryHistory';
 
 let instance;
@@ -6,7 +5,7 @@ let instance;
 class History {
   constructor() {
     if (!instance) {
-      instance = process.env.BROWSER ? createBrowserHistory() : createMemoryHistory();
+      instance = createMemoryHistory();
     }
     return instance;
   }

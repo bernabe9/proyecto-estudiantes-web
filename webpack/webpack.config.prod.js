@@ -5,7 +5,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import path from 'path';
 import Dotenv from 'dotenv-webpack';
-import CompressionPlugin from 'compression-webpack-plugin';
 import 'babel-polyfill';
 
 const GLOBALS = {
@@ -24,7 +23,7 @@ export default {
   mode: 'production',
   output: {
     path: path.resolve(__dirname, '../dist'),
-    publicPath: '/',
+    publicPath: './',
     filename: '[name].[chunkhash].js'
   },
   optimization: {
@@ -60,14 +59,6 @@ export default {
         minifyURLs: true
       },
       inject: true
-    }),
-
-    new CompressionPlugin({
-      asset: '[path]',
-      algorithm: 'gzip',
-      test: /\.js$|\.css$/,
-      threshold: 0,
-      minRatio: 2,
     }),
 
     new Dotenv({

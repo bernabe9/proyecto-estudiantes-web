@@ -30,7 +30,7 @@ class ExercisesPage extends Component {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     };
-    const url = 'http://localhost:3000/ejercicios';
+    const url = `${process.env.API_URL}ejercicios`;
     // simulate server delay
     setTimeout(
       () =>

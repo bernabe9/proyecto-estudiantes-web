@@ -42,6 +42,7 @@
     "no-trailing-spaces": 1,
     "eol-last": 1,
     "no-underscore-dangle": 0,
+    "no-restricted-globals": 0,
     "no-alert": 0,
     "no-lone-blocks": 0,
     "jsx-quotes": 1,

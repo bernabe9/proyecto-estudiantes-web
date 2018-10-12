@@ -1,5 +1,5 @@
 import React from 'react';
-import { bool, array, func } from 'prop-types';
+import { bool, array, func, object } from 'prop-types';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -14,6 +14,11 @@ const styles = () => ({
   }
 });
 
+export const formatExerciseTypes = {
+  verbos: 'Verbos',
+  use_of_en: 'Uso de inglés'
+};
+
 const ExercisesList = ({ loading, exercises, onSelectExercise, classes }) => {
   if (loading) {
     return <CircularProgress />;
@@ -21,13 +26,16 @@ const ExercisesList = ({ loading, exercises, onSelectExercise, classes }) => {
 
   return (
     <List className={classes.root}>
-      {exercises.map(({ _id, tipo }, index) =>
+      {exercises.map(({ id, tipo }, index) =>
         <ListItem
-          onClick={() => onSelectExercise(_id)}
-          key={_id}
+          onClick={() => onSelectExercise(id)}
+          key={id}
           button
         >
-          <ListItemText primary={`Ejercicio ${index + 1}`} secondary={tipo} />
+          <ListItemText
+            primary={`Ejercicio ${index + 1}`}
+            secondary={formatExerciseTypes[tipo]}
+          />
         </ListItem>)
       }
     </List>
@@ -38,6 +46,7 @@ ExercisesList.propTypes = {
   loading: bool.isRequired,
   exercises: array.isRequired,
   onSelectExercise: func.isRequired,
+  classes: object.isRequired
 };
 
 export default withStyles(styles)(ExercisesList);

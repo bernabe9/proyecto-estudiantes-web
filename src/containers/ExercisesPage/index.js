@@ -33,7 +33,7 @@ class ExercisesPage extends Component {
 
   findExerciseById = (id) => {
     const { exercises } = this.state;
-    return exercises.find(exercise => exercise._id === id);
+    return exercises.find(exercise => exercise.id === id);
   }
 
   render() {

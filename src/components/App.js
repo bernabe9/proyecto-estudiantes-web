@@ -10,7 +10,7 @@ import routes from '../routes';
 const App = () => (
   <Fragment>
     <Helmet>
-      <title>Prototipo Estudiantes</title>
+      <title>Proyecto Ingles - Estudiante</title>
     </Helmet>
     <ConnectedRouter history={history}>
       <Switch>

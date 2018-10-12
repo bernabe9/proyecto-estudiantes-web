@@ -3,6 +3,7 @@ import { object } from 'prop-types';
 
 import Header from '../../components/Header';
 import ExercisesList from '../../components/exercises/ExercisesList';
+import exerciseApi from '../../api/exerciseApi';
 
 class ExercisesPage extends Component {
   static propTypes = {
@@ -26,28 +27,8 @@ class ExercisesPage extends Component {
 
   getExercises = () => {
     this.setState({ loading: true });
-    const request = {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' }
-    };
-    const url = `${process.env.API_URL}ejercicios`;
-    // simulate server delay
-    setTimeout(
-      () =>
-        fetch(url, request)
-          .then(response =>
-            response.json().then((exercises) => {
-              this.setState({ exercises, loading: false });
-            }))
-          .catch(() => {
-            // mock response
-            const exercises = [
-              { name: 'test', id: 2 }
-            ];
-            this.setState({ exercises, loading: false });
-          }),
-      2000
-    );
+    exerciseApi.getExercises()
+      .then(exercises => this.setState({ exercises, loading: false }));
   }
 
   findExerciseById = (id) => {

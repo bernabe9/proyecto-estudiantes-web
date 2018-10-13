@@ -78,6 +78,23 @@ class NounExercise extends PureComponent {
       const { inputs, submitted } = this.state;
       const { value, solucion } = inputs[defIndex];
 
+      if (chunks.length === 1) {
+        return (
+          <Fragment key={index}>
+            <span>{chunk}</span>
+            <span>
+              <TextField
+                value={value}
+                variant="outlined"
+                className={classes.input}
+                error={submitted && value.toLowerCase() !== solucion.toLowerCase()}
+                onChange={({ target }) => this.onChangeInput(defIndex, target.value)}
+              />
+            </span>
+          </Fragment>
+        );
+      }
+
       return (
         <Fragment key={index}>
           <span>{chunk}</span>

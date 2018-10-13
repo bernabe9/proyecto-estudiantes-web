@@ -42,9 +42,10 @@ class Api {
 
   get(uri, apiUrl = process.env.API_URL) {
     const requestData = {
-      method: 'get',
+      method: 'GET',
       headers: {
-        Accept: 'application/json'
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
       }
     };
     return this.performRequest(uri, apiUrl, requestData);

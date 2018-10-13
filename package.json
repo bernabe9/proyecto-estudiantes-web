@@ -1,5 +1,5 @@
 {
-  "name": "react_redux_base",
+  "name": "proyecto_ingles_estudiante",
   "version": "0.1.0",
   "description": "Proyecto grado 2018",
   "engines": {
@@ -59,7 +59,7 @@
     }
   },
   "dependencies": {
-    "@material-ui/core": "1.5.0",
+    "@material-ui/core": "3.2.0",
     "@material-ui/icons": "2.0.2",
     "history": "4.7.2",
     "humps": "2.0.1",

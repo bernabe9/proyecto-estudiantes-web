@@ -41,7 +41,7 @@ class ExercisesPage extends Component {
 
     return (
       <Fragment>
-        <Header />
+        <Header onRefresh={this.getExercises} />
         <div className="exercise-page">
           <div className="container">
             <ExercisesList

@@ -1,5 +1,5 @@
 import React from 'react';
-import { object } from 'prop-types';
+import { object, func } from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 
 import BackArrow from './icons/BackArrow';
+import Refresh from './icons/Refresh';
 
 const styles = {
   backButton: {
@@ -15,8 +16,9 @@ const styles = {
   },
 };
 
-const Header = ({ history, classes }) => {
+const Header = ({ history, onRefresh, classes }) => {
   const showBackButton = history.index > 0;
+  const showRefreshButton = history.index === 0;
 
   return (
     <AppBar position="static" color="default">
@@ -29,6 +31,14 @@ const Header = ({ history, classes }) => {
             <BackArrow />
           </IconButton>
         }
+        {showRefreshButton &&
+          <IconButton
+            className={classes.backButton}
+            onClick={onRefresh}
+          >
+            <Refresh />
+          </IconButton>
+        }
         <Typography variant="title" color="inherit">
           Proyecto 2018
         </Typography>
@@ -39,7 +49,8 @@ const Header = ({ history, classes }) => {
 
 Header.propTypes = {
   history: object.isRequired,
-  classes: object.isRequired
+  classes: object.isRequired,
+  onRefresh: func.isRequired,
 };
 
 export default withStyles(styles)(withRouter(Header));

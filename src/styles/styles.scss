@@ -15,7 +15,7 @@ body {
   justify-content: center;
   margin: 3rem auto;
   max-width: 900px;
-  width: 55%;
+  width: 80%;
 }
 
 .text-area {
@@ -71,5 +71,11 @@ body {
   & > div::after {
     border-bottom: 2px solid green;
     transform: scaleX(1);
+  }
+}
+
+.noun-exercise {
+  input {
+    padding: 6px;
   }
 }

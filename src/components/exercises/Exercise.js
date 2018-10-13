@@ -3,6 +3,7 @@ import { object } from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 
 import VerbExercise from './VerbExercise';
+import NounExercise from './NounExercise';
 import { exerciseTypes } from '../../constants/constants';
 
 const Exercise = ({ exercise }) => {
@@ -17,7 +18,7 @@ const Exercise = ({ exercise }) => {
       </Typography>
       {IsFillInBlank ?
         <VerbExercise exercise={exercise} /> :
-        <p>Seleccione un ejerccicio</p>
+        <NounExercise exercise={exercise} />
       }
     </div>
   );

@@ -16,7 +16,8 @@ const styles = () => ({
 
 export const formatExerciseTypes = {
   verbos: 'Verbos',
-  use_of_en: 'Uso de inglés'
+  use_of_en: 'Uso de inglés',
+  sustantivos: 'Sustantivos'
 };
 
 const ExercisesList = ({ loading, exercises, onSelectExercise, classes }) => {

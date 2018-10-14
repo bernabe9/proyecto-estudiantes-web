@@ -21,7 +21,7 @@ class s3 {
           reject(`error listing bucket objects ${err}`);
           return;
         }
-        
+
         const items = data.Contents;
 
         if (items.length === 0) {
@@ -66,9 +66,6 @@ class s3 {
               ACL: 'public-read',
               ContentType: mime.getType(fileName)
             };
-            if (/\.js$|\.css$/.test(fileName)) {
-              s3Params.ContentEncoding = 'gzip';
-            }
 
             // upload file to S3
             this.client.putObject(s3Params, (err) => {

@@ -1,11 +1,14 @@
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import WebpackMd5Hash from 'webpack-md5-hash';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import path from 'path';
 import Dotenv from 'dotenv-webpack';
+import { GenerateSW } from 'workbox-webpack-plugin';
 import 'babel-polyfill';
+
+import resolve from './shared/resolve';
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
@@ -14,9 +17,7 @@ const GLOBALS = {
 };
 
 export default {
-  resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
-  },
+  resolve,
   devtool: 'source-map',
   entry: ['babel-polyfill', path.resolve(__dirname, '../src/index')],
   target: 'web',
@@ -24,7 +25,8 @@ export default {
   output: {
     path: path.resolve(__dirname, '../dist'),
     publicPath: './',
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name]-[chunkhash].js'
   },
   optimization: {
     minimizer: [
@@ -64,6 +66,26 @@ export default {
     new Dotenv({
       path: path.resolve(__dirname, `../.env.${process.env.ENV || 'prod'}`),
       systemvars: true,
+    }),
+
+    new GenerateSW({
+      swDest: './main-sw.js',
+      clientsClaim: true,
+      skipWaiting: true,
+      navigateFallback: '/',
+      globDirectory: 'dist/',
+      runtimeCaching: [
+        {
+          urlPattern: new RegExp('http?://localhost:3000/(.*)'),
+          handler: 'cacheFirst',
+          options: {
+            cacheName: 'api',
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
+      ]
     })
   ],
   module: {

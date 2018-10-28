@@ -43,6 +43,9 @@ This base is already set up with a Node server for SSR.
 
 The command `yarn ssr` will compile the server and client.
 
+## Progressive web app
+To enable your progressive web app, set the environment variable `ENABLE_PWA` in your dot environment file.
+
 ### Fetching data
 The server is prepared to fetch data directly from the backend before rendering the HTML.
 
@@ -74,6 +77,7 @@ The server is prepared to fetch data directly from the backend before rendering 
 | [ReduxForm](http://redux-form.com/6.4.3/) | Redux-form works with React Redux to enable an html form in React to use Redux to store all of its state. |
 | [Isomorphic Fetch](https://github.com/matthew-andrews/isomorphic-fetch) |  Is a Promise-based mechanism for programatically making web requests in the browser. |
 | [Immutable.js](https://github.com/facebook/immutable-js/) | Immutable persistent data collections for Javascript which increase efficiency and simplicity. |
+| [React Intl](https://github.com/yahoo/react-intl/) | Localization for language support. |
 
 ## License
 

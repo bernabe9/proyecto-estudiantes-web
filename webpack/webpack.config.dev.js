@@ -3,6 +3,8 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import Dotenv from 'dotenv-webpack';
 
+import resolve from './shared/resolve';
+
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('development'),
   'process.env.BROWSER': true,
@@ -10,13 +12,10 @@ const GLOBALS = {
 };
 
 export default {
-  resolve: {
-    extensions: ['*', '.js', '.jsx', '.json'],
-  },
+  resolve,
   devtool: 'eval-source-map',
   entry: [
     'babel-polyfill',
-    'react-hot-loader/patch',
     './src/webpack-public-path',
     'webpack-hot-middleware/client?reload=true',
     path.resolve(__dirname, '../src/index.js')
@@ -55,7 +54,7 @@ export default {
         options: {
           cacheDirectory: true,
           babelrc: false,
-          presets: [['env', { modules: false }], 'react', 'stage-0'],
+          presets: [['env', { modules: false }], 'react', 'stage-1'],
           plugins: ['react-hot-loader/babel'],
         }
       },

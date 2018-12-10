@@ -6,6 +6,7 @@ import BackArrow from 'icons/BackArrow';
 import Refresh from 'icons/Refresh';
 import Wrapper from './Wrapper';
 import Button from './Button';
+import LoadExercise from './LoadExercise';
 
 const Header = ({ history, onRefresh }) => {
   const showBackButton = history.index > 0;
@@ -25,6 +26,7 @@ const Header = ({ history, onRefresh }) => {
           <span>Refrescar</span>
         </Button>
       }
+      <LoadExercise />
     </Wrapper>
   );
 };

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const ListTitle = styled.p`
-  color: white;
+  color: black;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5em;

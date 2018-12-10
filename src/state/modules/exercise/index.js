@@ -47,6 +47,10 @@ export const fetchExercises = () => (dispatch) => {
   });
 };
 
+export const saveExercises = data => (dispatch) => {
+  dispatch(exercisesReceived(data));
+};
+
 // SELECTORS
 export const getExercises = createSelector(
   state => state.getIn(['exercise', 'exercises']),

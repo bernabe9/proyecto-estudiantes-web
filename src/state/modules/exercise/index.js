@@ -54,7 +54,7 @@ export const saveExercises = data => (dispatch) => {
 // SELECTORS
 export const getExercises = createSelector(
   state => state.getIn(['exercise', 'exercises']),
-  exercises => exercises.toJS()
+  exercises => exercises.toJS().reverse()
 );
 
 export const getCurrentExercise = createSelector(

@@ -8,5 +8,6 @@ export const STATE_ERROR = 'STATE_ERROR';
 export const exerciseTypes = {
   verbos: 'verbos',
   use_of_en: 'use_of_en',
-  sustantivos: 'sustantivos'
+  sustantivos: 'sustantivos',
+  hiponimos: 'hiponimos'
 };

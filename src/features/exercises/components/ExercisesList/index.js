@@ -9,7 +9,8 @@ import ListSubTitle from './ListSubTitle';
 export const formatExerciseTypes = {
   verbos: 'Verbos',
   use_of_en: 'Uso de inglés',
-  sustantivos: 'Sustantivos'
+  sustantivos: 'Sustantivos',
+  hiponimos: 'Hipónimos'
 };
 
 const ExercisesList = ({ exercises, onSelectExercise }) =>

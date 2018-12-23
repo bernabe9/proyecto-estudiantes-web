@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ListSubTitle = styled.p`
+const ListSubTitle = styled.span`
   color: rgba(0, 0, 0, 0.54);
   font-size: 14px;
   font-weight: 400;

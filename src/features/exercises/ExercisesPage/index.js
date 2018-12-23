@@ -38,13 +38,15 @@ class ExercisesPage extends PureComponent {
     const { state, exercises } = this.props;
     const isError = state === STATE_ERROR;
     const isLoading = state === STATE_LOADING && !isError;
+    const isEmptyExercises = exercises.length === 0;
 
     return (
       <Page Header={this.renderHeader}>
         <Title>Seleccione un ejercicio</Title>
         {isLoading && <Spinner />}
         {isError && <p>No se pueden obtener los ejercicios. Verifique su conexion a internet.</p>}
-        {!isLoading && !isError &&
+        {isEmptyExercises && <p>No se encontraron ejercicios.</p>}
+        {!isLoading && !isError && !isEmptyExercises &&
           <ExercisesList
             exercises={exercises}
             onSelectExercise={this.onSelectExercise}

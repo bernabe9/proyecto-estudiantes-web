@@ -31,7 +31,8 @@
     "dev": "NODE_ENV=development nf start",
     "pack": "electron-builder --dir",
     "release": "ELECTRON=true npm run build && electron-builder",
-    "release:linux": "ELECTRON=true npm run build && electron-builder --linux"
+    "release:linux": "ELECTRON=true npm run build && electron-builder --linux",
+    "release:mac": "ELECTRON=true npm run build && electron-builder"
   },
   "author": "Bernabe Gonzalez <gobernabe@gmail.com>",
   "license": "MIT",

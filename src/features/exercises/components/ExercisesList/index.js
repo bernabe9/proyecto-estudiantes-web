@@ -17,13 +17,13 @@ export const formatExerciseTypes = {
 
 const ExercisesList = ({ exercises, onSelectExercise }) =>
   <List>
-    {exercises.map(({ id, tipo, date }, index) =>
+    {exercises.map(({ id, tipo, date, numero }) =>
       <ListItem
         onClick={() => onSelectExercise(id)}
         key={id}
         button
       >
-        <ListTitle>{`Ejercicio ${index + 1}`}</ListTitle>
+        <ListTitle>{`Ejercicio ${numero}`}</ListTitle>
         <ListSubSection>
           <ListSubTitle>{formatExerciseTypes[tipo]}</ListSubTitle>
           <ListSubTitle>{format(date, 'DD/MM/YYYY')}</ListSubTitle>

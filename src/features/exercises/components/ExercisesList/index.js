@@ -1,10 +1,12 @@
 import React, { memo } from 'react';
 import { array, func } from 'prop-types';
+import format from 'date-fns/format';
 
 import List from './List';
 import ListItem from './ListItem';
 import ListTitle from './ListTitle';
 import ListSubTitle from './ListSubTitle';
+import ListSubSection from './ListSubSection';
 
 export const formatExerciseTypes = {
   verbos: 'Verbos',
@@ -15,14 +17,17 @@ export const formatExerciseTypes = {
 
 const ExercisesList = ({ exercises, onSelectExercise }) =>
   <List>
-    {exercises.map(({ id, tipo }, index) =>
+    {exercises.map(({ id, tipo, date }, index) =>
       <ListItem
         onClick={() => onSelectExercise(id)}
         key={id}
         button
       >
         <ListTitle>{`Ejercicio ${index + 1}`}</ListTitle>
-        <ListSubTitle>{formatExerciseTypes[tipo]}</ListSubTitle>
+        <ListSubSection>
+          <ListSubTitle>{formatExerciseTypes[tipo]}</ListSubTitle>
+          <ListSubTitle>{format(date, 'DD/MM/YYYY')}</ListSubTitle>
+        </ListSubSection>
       </ListItem>)
     }
   </List>;

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { object, func } from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import humps from 'humps';
@@ -39,6 +40,12 @@ const LoadExercise = ({ history, setExercise, loadExercises }) => {
       />
     </Fragment>
   );
+};
+
+LoadExercise.propTypes = {
+  history: object.isRequired,
+  setExercise: func.isRequired,
+  loadExercises: func.isRequired,
 };
 
 const mapDispatch = dispatch => ({

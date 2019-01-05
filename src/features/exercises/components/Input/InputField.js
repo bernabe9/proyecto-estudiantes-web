@@ -1,7 +1,16 @@
 import styled from 'styled-components';
 
-const border = ({ error }) => {
-  const color = error ? '#f44336' : 'rgba(0, 0, 0, 0.23)';
+const border = ({ error, warning, success }) => {
+  let color;
+  if (error) {
+    color = '#f44336';
+  } else if (warning) {
+    color = '#e1e164';
+  } else if (success) {
+    color = 'green';
+  } else {
+    color = 'rgba(0, 0, 0, 0.23)';
+  }
   return `border: 1px solid ${color};`;
 };
 

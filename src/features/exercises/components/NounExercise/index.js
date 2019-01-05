@@ -1,9 +1,9 @@
 import React, { PureComponent, Fragment } from 'react';
 import { object } from 'prop-types';
-import { capitalizeFirstLetter } from 'utils/helpers';
 import Paper from 'components/Paper';
 import Chip from 'components/Chip';
 import Button from '@material-ui/core/Button';
+import { capitalizeFirstLetter, getEditDistance } from 'utils/helpers';
 
 import Input from '../Input';
 import Title from './Title';
@@ -49,6 +49,12 @@ class NounExercise extends PureComponent {
     chunks.map((chunk, index) => {
       const { inputs, submitted } = this.state;
       const { value, solucion } = inputs[defIndex];
+      const editDistance = getEditDistance(
+        value.toLowerCase(),
+        solucion.toLowerCase()
+      );
+      const hasWarning = editDistance > 0 && editDistance < 2;
+      const hasError = !hasWarning && value.toLowerCase() !== solucion.toLowerCase();
 
       if (chunks.length === 1) {
         return (
@@ -57,7 +63,9 @@ class NounExercise extends PureComponent {
             <span>
               <Input
                 value={value}
-                error={submitted && value.toLowerCase() !== solucion.toLowerCase()}
+                error={submitted && hasError}
+                warning={submitted && hasWarning}
+                success={submitted && !hasError && !hasWarning}
                 onChange={value => this.onChangeInput(defIndex, value)}
               />
             </span>
@@ -72,7 +80,9 @@ class NounExercise extends PureComponent {
             <span>
               <Input
                 value={value}
-                error={submitted && value.toLowerCase() !== solucion.toLowerCase()}
+                error={submitted && hasError}
+                warning={submitted && hasWarning}
+                success={submitted && !hasError && !hasWarning}
                 onChange={value => this.onChangeInput(defIndex, value)}
               />
             </span>

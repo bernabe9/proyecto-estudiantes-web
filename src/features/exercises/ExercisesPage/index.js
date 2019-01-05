@@ -45,7 +45,7 @@ class ExercisesPage extends PureComponent {
         <Title>Seleccione un ejercicio</Title>
         {isLoading && <Spinner />}
         {isError && <p>No se pueden obtener los ejercicios. Verifique su conexion a internet.</p>}
-        {isEmptyExercises && <p>No se encontraron ejercicios.</p>}
+        {!isLoading && isEmptyExercises && <p>No se encontraron ejercicios.</p>}
         {!isLoading && !isError && !isEmptyExercises &&
           <ExercisesList
             exercises={exercises}
